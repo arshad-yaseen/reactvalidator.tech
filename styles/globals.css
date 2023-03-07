@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face{
+    font-family: 'ClashDisplay-Variable';
+    src: url('../public/fonts/Satoshi-Variable.ttf');
+}
+
+*{
+    font-family: 'ClashDisplay-Variable';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    overflow-x: hidden;
+}
