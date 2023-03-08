@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@vercel/analytics": "^0.1.11",
     "form-validation-react": "^1.4.0",
     "framer-motion": "^10.2.3",
     "next": "latest",
