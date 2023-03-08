@@ -10,6 +10,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { TbCopy } from "react-icons/tb";
 import { BsCheck } from "react-icons/bs";
+import WebsiteImage from "../../public/images/website.png";
 
 function validateinteger() {
   const customModalStyles = {
@@ -143,6 +144,10 @@ function validateinteger() {
         <title>Validate Integer - React</title>
         <link rel="icon" href={Logo.src} />
         <meta name="description" content="This is used for validating integer values of an input based on a set of defined rules." />
+        <meta
+          property="og:image"
+          content={WebsiteImage.src}
+        />
       </Head>
 
       <Image

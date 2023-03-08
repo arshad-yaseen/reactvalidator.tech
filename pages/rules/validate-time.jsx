@@ -10,6 +10,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { TbCopy } from "react-icons/tb";
 import { BsCheck } from "react-icons/bs";
+import WebsiteImage from "../../public/images/website.png";
 
 function validatedate() {
   const customModalStyles = {
@@ -142,6 +143,10 @@ function validatedate() {
         <title>Validate Time Input - React</title>
         <link rel="icon" href={Logo.src} />
         <meta name="description" content="This function is designed to validate time inputs according to the specified rules. It checks for valid time format, valid time range, valid timezone and whether the time falls within a specified interval." />
+        <meta
+          property="og:image"
+          content={WebsiteImage.src}
+        />
       </Head>
 
       <Image

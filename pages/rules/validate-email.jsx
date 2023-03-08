@@ -10,6 +10,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { TbCopy } from "react-icons/tb";
 import { BsCheck } from "react-icons/bs";
+import WebsiteImage from "../../public/images/website.png";
 
 function validateemail() {
     
@@ -115,6 +116,10 @@ const htmlcode = `<input name="my_email" type="email" required />`
         <title>Validate Email - React</title>
         <link rel="icon" href={Logo.src} />
         <meta name="description" content="This is used to validate email addresses based on pre-defined patterns. It takes input from a form and checks it against a regular expression pattern"  />
+        <meta
+          property="og:image"
+          content={WebsiteImage.src}
+        />
       </Head>
 
       <Image

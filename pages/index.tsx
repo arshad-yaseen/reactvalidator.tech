@@ -19,7 +19,7 @@ const Home: NextPage = () => {
   return (      
     <div className="flex min-h-screen flex-col ">
       <Head>
-        <title>Easiest Form Validator - React</title>
+        <title>Form Validation React - Less Code</title>
         <link rel="icon" href={Logo.src} />
         <meta
          name="description"

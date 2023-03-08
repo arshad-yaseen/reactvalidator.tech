@@ -10,6 +10,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { TbCopy } from "react-icons/tb";
 import { BsCheck } from "react-icons/bs";
+import WebsiteImage from "../../public/images/website.png";
 
 function validatepatterns() {
   const customModalStyles = {
@@ -134,6 +135,10 @@ function validatepatterns() {
         <link rel="icon" href={Logo.src} />
         <meta name="description" content="This function is used to validate input fields against a specific
             pattern, such as a regular expression or a wildcard pattern." />
+            <meta
+          property="og:image"
+          content={WebsiteImage.src}
+        />
       </Head>
 
       <Image

@@ -10,6 +10,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { TbCopy } from "react-icons/tb";
 import { BsCheck } from "react-icons/bs";
+import WebsiteImage from "../../public/images/website.png";
 
 function validaterequired() {
     
@@ -107,6 +108,10 @@ function validaterequired() {
         <title>Validate Required - React</title>
         <link rel="icon" href={Logo.src} />
         <meta name="description" content="To check if all required input fields are filled when click on submit" />
+        <meta
+          property="og:image"
+          content={WebsiteImage.src}
+        />
       </Head>
 
       <Image

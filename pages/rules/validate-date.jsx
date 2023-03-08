@@ -10,6 +10,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { TbCopy } from "react-icons/tb";
 import { BsCheck } from "react-icons/bs";
+import WebsiteImage from "../../public/images/website.png";
 
 function validatedate() {
   const customModalStyles = {
@@ -144,6 +145,10 @@ function validatedate() {
         <meta
          name="description"
           content="This function is used for validate date input"
+        />
+        <meta
+          property="og:image"
+          content={WebsiteImage.src}
         />
       </Head>
 

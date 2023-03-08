@@ -10,6 +10,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { TbCopy } from "react-icons/tb";
 import { BsCheck } from "react-icons/bs";
+import WebsiteImage from "../../public/images/website.png";
 
 function validateminmax() {
     
@@ -123,6 +124,10 @@ const htmlcode = `<input min={4} max={8} type="number" required />`
         <title>Validate Min & Max - React</title>
         <link rel="icon" href={Logo.src} />
         <meta name="description" content="Checking all Min and Max values of a form inputs and returning a callback and show error." />
+        <meta
+          property="og:image"
+          content={WebsiteImage.src}
+        />
       </Head>
 
       <Image

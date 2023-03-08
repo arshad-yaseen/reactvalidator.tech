@@ -10,6 +10,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { TbCopy } from "react-icons/tb";
 import { BsCheck } from "react-icons/bs";
+import WebsiteImage from "../../public/images/website.png";
 
 function validatephonenumber() {
   const customModalStyles = {
@@ -148,6 +149,10 @@ function validatephonenumber() {
             validate a number within a specified range, with a specified number
             of decimal places, and check whether it's an integer. This function
             also supports negative numbers and numbers in a specific base." />
+            <meta
+          property="og:image"
+          content={WebsiteImage.src}
+        />
       </Head>
 
       <Image

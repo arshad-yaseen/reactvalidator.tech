@@ -10,6 +10,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { TbCopy } from "react-icons/tb";
 import { BsCheck } from "react-icons/bs";
+import WebsiteImage from "../../public/images/website.png";
 
 function validatecreditcard() {
   const customModalStyles = {
@@ -141,6 +142,10 @@ function validatecreditcard() {
         <meta
          name="description"
           content="This function that can be used to validate credit card information"
+        />
+        <meta
+          property="og:image"
+          content={WebsiteImage.src}
         />
       </Head>
 

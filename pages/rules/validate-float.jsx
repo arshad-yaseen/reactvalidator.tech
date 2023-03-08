@@ -10,6 +10,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { TbCopy } from "react-icons/tb";
 import { BsCheck } from "react-icons/bs";
+import WebsiteImage from "../../public/images/website.png";
 
 function validatefloat() {
   const customModalStyles = {
@@ -138,6 +139,10 @@ function validatefloat() {
         <title>Validate Float - React</title>
         <link rel="icon" href={Logo.src} />
         <meta name="description" content="This function provides a method for validating float values." />
+        <meta
+          property="og:image"
+          content={WebsiteImage.src}
+        />
       </Head>
 
       <Image
