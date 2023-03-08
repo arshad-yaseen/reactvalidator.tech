@@ -3,11 +3,13 @@ import Image from "next/image";
 import React from "react";
 import Dots from "../public/images/dots.svg";
 import Logo from "../public/images/logo.png";
-import {BsExclamation,BsPatchMinusFill,BsFillTelephoneFill,BsFillCalendarDateFill,BsLink45Deg,BsFillCreditCardFill} from "react-icons/bs"
+import {BsPatchMinus,BsCalendar2Date,BsLink45Deg,BsCreditCard2Back} from "react-icons/bs"
 import {HiOutlineMail} from "react-icons/hi"
+import {FiPhone} from "react-icons/fi"
 import {MdPattern} from "react-icons/md"
 import {TbSquareRoundedNumber3,TbNumber,TbListNumbers} from "react-icons/tb"
 import {WiTime5} from "react-icons/wi"
+import {AiOutlineExclamationCircle} from "react-icons/ai"
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 
@@ -20,6 +22,10 @@ function rules() {
       <Head>
         <title>Rules</title>
         <link rel="icon" href={Logo.src} />
+        <meta
+         name="description"
+          content="Rules of form validation"
+        />
       </Head>
 
       <Image
@@ -44,62 +50,62 @@ function rules() {
       </div>
  
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.2,type:"spring"}} onClick={(e)=> router.push("/rules/validate-required")} className="w-[200px]  hover:bg-slate-100 cursor-pointer h-[200px] mx-5 px-6 bg-slate-50  transition-all rounded-xl  flex flex-col pt-8 items-center">
-            <span className="text-5xl  bg-indigo-600 mb-4 text-white rounded-lg" ><BsExclamation /></span>
+            <span className="text-2xl p-2  bg-slate-100 mb-4 text-indigo-600 rounded-lg" ><AiOutlineExclamationCircle /></span>
             <h1 className="font-[600] text-xl text-center" >Validate Required Inputs</h1>
         </motion.div>
 
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.2,type:"spring"}} onClick={(e)=> router.push("/rules/validate-min-max")} className="w-[200px]  hover:bg-slate-100 cursor-pointer h-[200px] mx-5 px-6 bg-slate-50  transition-all rounded-xl  flex flex-col pt-8 items-center">
-            <span className="text-3xl p-2 bg-indigo-600 mb-4 text-white rounded-lg" ><BsPatchMinusFill /></span>
+            <span className="text-2xl p-2 bg-slate-100 mb-4 text-indigo-600 rounded-lg" ><BsPatchMinus /></span>
             <h1 className="font-[600] text-xl text-center" >Validate Min and Max</h1>
         </motion.div>
 
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.2,type:"spring"}} onClick={(e)=> router.push("/rules/validate-email")} className="w-[200px]  hover:bg-slate-100 cursor-pointer h-[200px] mx-5 px-6 bg-slate-50  transition-all rounded-xl  flex flex-col pt-8 items-center">
-            <span className="text-3xl p-2 bg-indigo-600 mb-4 text-white rounded-lg" ><HiOutlineMail /></span>
+            <span className="text-2xl p-2 bg-slate-100 mb-4 text-indigo-600 rounded-lg" ><HiOutlineMail /></span>
             <h1 className="font-[600] text-xl text-center" >Validate Email Inputs</h1>
         </motion.div>
 
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.2,type:"spring"}} onClick={(e)=> router.push("/rules/validate-patterns")} className="w-[200px]  hover:bg-slate-100 cursor-pointer h-[200px] mx-5 px-6 bg-slate-50  transition-all rounded-xl  flex flex-col pt-8 items-center">
-            <span className="text-3xl p-2 bg-indigo-600 mb-4 text-white rounded-lg" ><MdPattern /></span>
+            <span className="text-2xl p-2 bg-slate-100 mb-4 text-indigo-600 rounded-lg" ><MdPattern /></span>
             <h1 className="font-[600] text-xl text-center" >Validate Patterns</h1>
         </motion.div>
 
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.3,type:"spring"}} onClick={(e)=> router.push("/rules/validate-phone-number")} className="w-[200px]  hover:bg-slate-100 cursor-pointer h-[200px] mx-5 px-6 bg-slate-50  transition-all rounded-xl  flex flex-col pt-8 items-center">
-            <span className="text-3xl p-2 bg-indigo-600 mb-4 text-white rounded-lg" ><BsFillTelephoneFill /></span>
+            <span className="text-2xl p-2 bg-slate-100 mb-4 text-indigo-600 rounded-lg" ><FiPhone /></span>
             <h1 className="font-[600] text-xl text-center" >Validate Phone Number</h1>
         </motion.div>
 
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.3,type:"spring"}} onClick={(e)=> router.push("/rules/validate-number")} className="w-[200px]  hover:bg-slate-100 cursor-pointer h-[200px] mx-5 px-6 bg-slate-50  transition-all rounded-xl  flex flex-col pt-8 items-center">
-            <span className="text-3xl p-2 bg-indigo-600 mb-4 text-white rounded-lg" ><TbNumber /></span>
+            <span className="text-2xl p-2 bg-slate-100 mb-4 text-indigo-600 rounded-lg" ><TbNumber /></span>
             <h1 className="font-[600] text-xl text-center" >Validate Number</h1>
         </motion.div>
 
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.3,type:"spring"}} onClick={(e)=> router.push("/rules/validate-integer")} className="w-[200px]  hover:bg-slate-100 cursor-pointer h-[200px] mx-5 px-6 bg-slate-50  transition-all rounded-xl  flex flex-col pt-8 items-center">
-            <span className="text-3xl p-2 bg-indigo-600 mb-4 text-white rounded-lg" ><TbSquareRoundedNumber3 /></span>
+            <span className="text-2xl p-2 bg-slate-100 mb-4 text-indigo-600 rounded-lg" ><TbSquareRoundedNumber3 /></span>
             <h1 className="font-[600] text-xl text-center" >Validate Integers</h1>
         </motion.div>
 
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.3,type:"spring"}} onClick={(e)=> router.push("/rules/validate-float")} className="w-[200px]  hover:bg-slate-100 cursor-pointer h-[200px] mx-5 px-6 bg-slate-50  transition-all rounded-xl  flex flex-col pt-8 items-center">
-            <span className="text-3xl p-2 bg-indigo-600 mb-4 text-white rounded-lg" ><TbListNumbers /></span>
+            <span className="text-2xl p-2 bg-slate-100 mb-4 text-indigo-600 rounded-lg" ><TbListNumbers /></span>
             <h1 className="font-[600] text-xl text-center" >Validate Float Inputs</h1>
         </motion.div>
 
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.4,type:"spring"}} onClick={(e)=> router.push("/rules/validate-date")} className="w-[200px]  hover:bg-slate-100 cursor-pointer h-[200px] mx-5 px-6 bg-slate-50  transition-all rounded-xl  flex flex-col pt-8 items-center">
-            <span className="text-3xl p-2 bg-indigo-600 mb-4 text-white rounded-lg" ><BsFillCalendarDateFill /></span>
+            <span className="text-2xl p-2 bg-slate-100 mb-4 text-indigo-600 rounded-lg" ><BsCalendar2Date /></span>
             <h1 className="font-[600] text-xl text-center" >Validate Date Inputs</h1>
         </motion.div>
 
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.4,type:"spring"}} onClick={(e)=> router.push("/rules/validate-time")} className="w-[200px]  hover:bg-slate-100 cursor-pointer h-[200px] mx-5 px-6 bg-slate-50  transition-all rounded-xl  flex flex-col pt-8 items-center">
-            <span className="text-3xl p-2 bg-indigo-600 mb-4 text-white rounded-lg" ><WiTime5 /></span>
+            <span className="text-2xl p-2 bg-slate-100 mb-4 text-indigo-600 rounded-lg" ><WiTime5 /></span>
             <h1 className="font-[600] text-xl text-center" >Validate Time Inputs</h1>
         </motion.div>
 
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.4,type:"spring"}} onClick={(e)=> router.push("/rules/validate-url")} className="w-[200px]  hover:bg-slate-100 cursor-pointer h-[200px] mx-5 px-6 bg-slate-50  transition-all rounded-xl  flex flex-col pt-8 items-center">
-            <span className="text-3xl p-2 bg-indigo-600 mb-4 text-white rounded-lg" ><BsLink45Deg /></span>
+            <span className="text-2xl p-2 bg-slate-100 mb-4 text-indigo-600 rounded-lg" ><BsLink45Deg /></span>
             <h1 className="font-[600] text-xl text-center" >Validate Url Inputs</h1>
         </motion.div>
 
         <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:0.4,type:"spring"}} onClick={(e)=> router.push("/rules/validate-credit-card")} className="w-[200px]  hover:bg-slate-100 cursor-pointer h-[200px] mx-5 px-6 bg-slate-50  transition-all rounded-xl  flex flex-col pt-8 items-center">
-            <span className="text-3xl p-2 bg-indigo-600 mb-4 text-white rounded-lg" ><BsFillCreditCardFill /></span>
+            <span className="text-2xl p-2 bg-slate-100 mb-4 text-indigo-600 rounded-lg" ><BsCreditCard2Back /></span>
             <h1 className="font-[600] text-xl text-center" >Validate Credit Card</h1>
         </motion.div>
 

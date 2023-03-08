@@ -11,7 +11,7 @@ import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { TbCopy } from "react-icons/tb";
 import { BsCheck } from "react-icons/bs";
 
-function validaterequired() {
+function validateemail() {
     
   const customModalStyles = {
     content: {
@@ -53,17 +53,16 @@ function validaterequired() {
     setIsOpen(false);
   }
 
-  const code = ` validateRequired: {
-    action: "both",
-    message: "fill all required fields",
-    applyOnly:["name","password"]
-    notvalidated: (notFilledInputs) => {
-    console.log("Not filled required inputs",notFilledInputs);
-    }
-    onsuccess:()=> {
-      console.log("All required fields are filled");
-    }
-  }`
+  const code = `ValidateEmail: {
+    type: "yahoo",
+    emailInput: "my_email",
+    message: "Please enter a valid yahoo email",
+    onsuccess: () => console.log("Email is valid"),
+    invalid: () => console.log("Email is invalid"),
+    when: "onblur",
+}`
+
+const htmlcode = `<input name="my_email" type="email" required />`
 
   return (
     <div id="my-rule-element" className="w-full h-screen flex justify-center">
@@ -99,14 +98,23 @@ function validaterequired() {
             {isCopied ? <BsCheck /> : <TbCopy />}{" "}
           </span>
         </div>
+        <div className="relative" >
+          <SyntaxHighlighter
+            language="html"
+            style={coldarkDark}
+            customStyle={codeStyles}
+          >
+            {htmlcode}
+          </SyntaxHighlighter>
+        </div>
 
-        <p className="text-md font-[500]" ><span onClick={()=> window.open("https://npmjs.com/package/form-validation-react#validate-required-inputs")} className="text-blue-500 hover:underline cursor-pointer" >Official documentation</span> for Know more about this function</p>
+        <p className="text-md font-[500]" ><span onClick={()=> window.open("https://npmjs.com/package/form-validation-react#validate-email")} className="text-blue-500 hover:underline cursor-pointer" >Official documentation</span> for Know more about this function</p>
       </Modal>
 
       <Head>
-        <title>Validate Required - React</title>
+        <title>Validate Email - React</title>
         <link rel="icon" href={Logo.src} />
-        <meta name="description" content="To check if all required input fields are filled when click on submit" />
+        <meta name="description" content="This is used to validate email addresses based on pre-defined patterns. It takes input from a form and checks it against a regular expression pattern"  />
       </Head>
 
       <Image
@@ -128,7 +136,7 @@ function validaterequired() {
             transition={{ type: "just", delay: 0 }}
             className="text-4xl font-[700]"
           >
-            Validate Required Inputs
+           Validate Email Inputs
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 80 }}
@@ -136,7 +144,7 @@ function validaterequired() {
             transition={{ type: "just", delay: 0.2 }}
             className="mt-6 text-xl font-[500] text-slate-500 text-center"
           >
-            To check if all required input fields are filled when click on submit
+            This is used to validate email addresses based on pre-defined patterns. It takes input from a form and checks it against a regular expression pattern
           </motion.p>
         </div>
         <motion.div
@@ -166,10 +174,12 @@ function validaterequired() {
           <ValidateForm
             errorElement="#signup_error_element"
             rules={{
-              validateRequired: {
-                action: "both",
-                message: "Fill all required fields",
-              },
+              ValidateEmail:{
+                type: "yahoo",
+                emailInput: "email",
+                message: "Please enter a valid yahoo email",
+                when:"typing"
+              }
             }}
           >
             <form className="sm:w-[500px] w-full  flex flex-col items-center ">
@@ -181,14 +191,16 @@ function validaterequired() {
               <div className="w-full   flex flex-col items-center">
                 <div className="w-full  font-bold flex flex-col">
                   <label className="text-sm" htmlFor="email">
-                    Enter your yahoo email
+                    Enter a yahoo email
                   </label>
                   <input
                     required
                     type="email"
                     name="email"
                     id="email"
-                    placeholder="Enter your yahoo email."
+                    min={4}
+                    max={8}
+                    placeholder="Enter yahoo email"
                     className="font-[500] outline-none rounded-lg border pl-4 py-3 border-slate-200 placeholder:text-slate-500  transition-all mt-2  "
                   />
                 </div>
@@ -198,6 +210,7 @@ function validaterequired() {
                     Confirm your email
                   </label>
                   <input
+                  disabled
                     required
                     type="email"
                     name="confirm_email"
@@ -212,6 +225,7 @@ function validaterequired() {
                     Create a password
                   </label>
                   <input
+                  disabled
                     required
                     type="password"
                     name="password"
@@ -227,6 +241,7 @@ function validaterequired() {
                   </label>
                   <input
                     required
+                    disabled
                     type="text"
                     name="profile_name"
                     id="profile_name"
@@ -250,4 +265,4 @@ function validaterequired() {
   );
 }
 
-export default validaterequired;
+export default validateemail;

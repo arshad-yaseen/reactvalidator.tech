@@ -11,20 +11,19 @@ import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { TbCopy } from "react-icons/tb";
 import { BsCheck } from "react-icons/bs";
 
-function validaterequired() {
-    
+function validatefloat() {
   const customModalStyles = {
     content: {
-      top: "40%",
+      top: "50%",
       left: "50%",
       right: "auto",
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
       borderRadius: "15px",
-      display:"flex",
-      flexDirection:"column",
-      alignItems:"center"
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
     },
   };
 
@@ -33,14 +32,14 @@ function validaterequired() {
     lineHeight: "1.5",
     overflowY: "scroll",
     width: "100%",
-    padding:"30px 40px",
+    padding: "30px 40px",
     marginBottom: "20px",
     borderRadius: "8px",
   };
 
- useEffect(()=> {
+  useEffect(() => {
     Modal.setAppElement("#my-rule-element");
- },[])
+  }, []);
 
   const [modalIsOpen, setIsOpen] = useState(false);
   let [isCopied, setIsCopied] = useState(false);
@@ -53,17 +52,23 @@ function validaterequired() {
     setIsOpen(false);
   }
 
-  const code = ` validateRequired: {
-    action: "both",
-    message: "fill all required fields",
-    applyOnly:["name","password"]
-    notvalidated: (notFilledInputs) => {
-    console.log("Not filled required inputs",notFilledInputs);
-    }
-    onsuccess:()=> {
-      console.log("All required fields are filled");
-    }
-  }`
+  const code = `ValidateFloat: {
+    when: 'onblur', // when to validate input - onblur or typing
+    input: 'input-name', // name of input field to validate
+    required: true, // whether the input is required or not
+    min: 0, // minimum value for input
+    max: 100, // maximum value for input
+    precision: 2, // maximum number of decimal places allowed
+    customErrorMessages: {
+      required: 'This field is required!',
+      invalid: 'Please enter a valid number!',
+      min: 'Please enter a number greater than or equal to {min}!',
+      max: 'Please enter a number less than or equal to {max}!',
+      precision: 'Please enter a number with at most {precision} decimal places!',
+    },
+},`;
+
+  const htmlcode = ``;
 
   return (
     <div id="my-rule-element" className="w-full h-screen flex justify-center">
@@ -73,8 +78,8 @@ function validaterequired() {
         style={customModalStyles}
         contentLabel="Example Modal"
       >
-        <p className="text-md font-[500] mb-3" >Paste this in rules section</p>
-        <div className="relative" >
+        <p className="text-md font-[500] mb-3">Paste this in rules section</p>
+        <div className="relative">
           <SyntaxHighlighter
             language="javascript"
             style={coldarkDark}
@@ -91,22 +96,48 @@ function validaterequired() {
               }, 1000);
             }}
             className={`absolute right-8 top-8 text-2xl flex -mt-3  ${
-              isCopied
-                ? "text-green-500"
-                : "text-slate-400 hover:text-white"
+              isCopied ? "text-green-500" : "text-slate-400 hover:text-white"
             }  cursor-pointer transition-colors`}
           >
             {isCopied ? <BsCheck /> : <TbCopy />}{" "}
           </span>
         </div>
+        {
+          // HTML CODE
+          htmlcode ? (
+            <div className="relative">
+              <SyntaxHighlighter
+                language="html"
+                style={coldarkDark}
+                customStyle={codeStyles}
+              >
+                {htmlcode}
+              </SyntaxHighlighter>
+            </div>
+          ) : (
+            ""
+          )
+        }
 
-        <p className="text-md font-[500]" ><span onClick={()=> window.open("https://npmjs.com/package/form-validation-react#validate-required-inputs")} className="text-blue-500 hover:underline cursor-pointer" >Official documentation</span> for Know more about this function</p>
+        <p className="text-md font-[500]">
+          <span
+            onClick={() =>
+              window.open(
+                "https://npmjs.com/package/form-validation-react#validate-float"
+              )
+            }
+            className="text-blue-500 hover:underline cursor-pointer"
+          >
+            Official documentation
+          </span>{" "}
+          for Know more about this function
+        </p>
       </Modal>
 
       <Head>
-        <title>Validate Required - React</title>
+        <title>Validate Float - React</title>
         <link rel="icon" href={Logo.src} />
-        <meta name="description" content="To check if all required input fields are filled when click on submit" />
+        <meta name="description" content="This function provides a method for validating float values." />
       </Head>
 
       <Image
@@ -128,7 +159,7 @@ function validaterequired() {
             transition={{ type: "just", delay: 0 }}
             className="text-4xl font-[700]"
           >
-            Validate Required Inputs
+            Validate Float
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 80 }}
@@ -136,7 +167,7 @@ function validaterequired() {
             transition={{ type: "just", delay: 0.2 }}
             className="mt-6 text-xl font-[500] text-slate-500 text-center"
           >
-            To check if all required input fields are filled when click on submit
+            This function provides a method for validating float values.
           </motion.p>
         </div>
         <motion.div
@@ -166,43 +197,55 @@ function validaterequired() {
           <ValidateForm
             errorElement="#signup_error_element"
             rules={{
-              validateRequired: {
-                action: "both",
-                message: "Fill all required fields",
-              },
+                ValidateFloat: {
+                    when: 'typing', // when to validate input - onblur or typing
+                    input: 'float', // name of input field to validate
+                    required: true, // whether the input is required or not
+                    min: 0, // minimum value for input
+                    max: 100, // maximum value for input
+                    precision: 2, // maximum number of decimal places allowed
+                    customErrorMessages: {
+                      required: 'This field is required!',
+                      invalid: 'Please enter a valid number!',
+                      min: 'Please enter a number greater than or equal to 0',
+                      max: 'Please enter a number less than or equal to 100!',
+                      precision: 'Please enter a number with at most 2 decimal places!',
+                    },
+                },
             }}
           >
             <form className="sm:w-[500px] w-full  flex flex-col items-center ">
               <p
                 id="signup_error_element"
-                className=" mb-7 h-6 font-[500] mt-6 text-sm text-red-500"
+                className=" mb-6 font-[500] mt-6 text-sm text-red-500"
               ></p>
 
               <div className="w-full   flex flex-col items-center">
                 <div className="w-full  font-bold flex flex-col">
                   <label className="text-sm" htmlFor="email">
-                    Enter your yahoo email
+                    Enter a float
                   </label>
                   <input
                     required
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="Enter your yahoo email."
+                    type="number"
+                    name="float"
+                    id="age"
+                    placeholder="Ex. 12.988 or 126"
                     className="font-[500] outline-none rounded-lg border pl-4 py-3 border-slate-200 placeholder:text-slate-500  transition-all mt-2  "
                   />
                 </div>
 
                 <div className="w-full mt-8 font-bold flex flex-col">
                   <label className="text-sm" htmlFor="confirm_email">
-                    Confirm your email
+                    Email
                   </label>
                   <input
+                    disabled
                     required
                     type="email"
-                    name="confirm_email"
+                    name="email"
                     id="confirm_email"
-                    placeholder="Enter your email again."
+                    placeholder="Your website"
                     className="font-[500] outline-none rounded-lg border pl-4 py-3 border-slate-200 placeholder:text-slate-500  transition-all mt-2  "
                   />
                 </div>
@@ -212,10 +255,11 @@ function validaterequired() {
                     Create a password
                   </label>
                   <input
+                    disabled
                     required
-                    type="password"
-                    name="password"
-                    id="password"
+                    type="another"
+                    name="another"
+                    id="anotjer"
                     placeholder="Create a password."
                     className="font-[500] outline-none rounded-lg border pl-4 py-3 border-slate-200 placeholder:text-slate-500  transition-all mt-2  "
                   />
@@ -227,6 +271,7 @@ function validaterequired() {
                   </label>
                   <input
                     required
+                    disabled
                     type="text"
                     name="profile_name"
                     id="profile_name"
@@ -250,4 +295,4 @@ function validaterequired() {
   );
 }
 
-export default validaterequired;
+export default validatefloat;

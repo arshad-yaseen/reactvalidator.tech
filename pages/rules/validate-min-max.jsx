@@ -11,11 +11,11 @@ import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { TbCopy } from "react-icons/tb";
 import { BsCheck } from "react-icons/bs";
 
-function validaterequired() {
+function validateminmax() {
     
   const customModalStyles = {
     content: {
-      top: "40%",
+      top: "50%",
       left: "50%",
       right: "auto",
       bottom: "auto",
@@ -53,17 +53,24 @@ function validaterequired() {
     setIsOpen(false);
   }
 
-  const code = ` validateRequired: {
-    action: "both",
-    message: "fill all required fields",
-    applyOnly:["name","password"]
-    notvalidated: (notFilledInputs) => {
-    console.log("Not filled required inputs",notFilledInputs);
+  const code = `ValidateMinMax: {
+    when: "typing"
+    message : {
+        min: "Full name must be at least 4 characters",
+        max: "Full name must be at most 8 characters"
+    },
+    exceedsMax: ()=> {
+        console.log("Maximum length exceeded");
+    },
+    exceedsMin: ()=> {
+        console.log("Minimum length exceeded");
     }
-    onsuccess:()=> {
-      console.log("All required fields are filled");
+    onsuccess:(validatedInput)=> {
+        console.log("Length is in range of :",validatedInput);
     }
-  }`
+}`
+
+const htmlcode = `<input min={4} max={8} type="number" required />`
 
   return (
     <div id="my-rule-element" className="w-full h-screen flex justify-center">
@@ -99,14 +106,23 @@ function validaterequired() {
             {isCopied ? <BsCheck /> : <TbCopy />}{" "}
           </span>
         </div>
+        <div className="relative" >
+          <SyntaxHighlighter
+            language="html"
+            style={coldarkDark}
+            customStyle={codeStyles}
+          >
+            {htmlcode}
+          </SyntaxHighlighter>
+        </div>
 
-        <p className="text-md font-[500]" ><span onClick={()=> window.open("https://npmjs.com/package/form-validation-react#validate-required-inputs")} className="text-blue-500 hover:underline cursor-pointer" >Official documentation</span> for Know more about this function</p>
+        <p className="text-md font-[500]" ><span onClick={()=> window.open("https://npmjs.com/package/form-validation-react#validate-min-and-max")} className="text-blue-500 hover:underline cursor-pointer" >Official documentation</span> for Know more about this function</p>
       </Modal>
 
       <Head>
-        <title>Validate Required - React</title>
+        <title>Validate Min & Max - React</title>
         <link rel="icon" href={Logo.src} />
-        <meta name="description" content="To check if all required input fields are filled when click on submit" />
+        <meta name="description" content="Checking all Min and Max values of a form inputs and returning a callback and show error." />
       </Head>
 
       <Image
@@ -128,7 +144,7 @@ function validaterequired() {
             transition={{ type: "just", delay: 0 }}
             className="text-4xl font-[700]"
           >
-            Validate Required Inputs
+           Validate Min and Max
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 80 }}
@@ -136,7 +152,7 @@ function validaterequired() {
             transition={{ type: "just", delay: 0.2 }}
             className="mt-6 text-xl font-[500] text-slate-500 text-center"
           >
-            To check if all required input fields are filled when click on submit
+            Checking all Min and Max values of a form inputs and returning a callback and show error.
           </motion.p>
         </div>
         <motion.div
@@ -166,10 +182,13 @@ function validaterequired() {
           <ValidateForm
             errorElement="#signup_error_element"
             rules={{
-              validateRequired: {
-                action: "both",
-                message: "Fill all required fields",
-              },
+              ValidateMinMax:{
+                when:"typing",
+                message:{
+                    min:"Username must be 4 characters",
+                    max:"Username cannot exceed 8 characters"
+                }
+              }
             }}
           >
             <form className="sm:w-[500px] w-full  flex flex-col items-center ">
@@ -181,14 +200,16 @@ function validaterequired() {
               <div className="w-full   flex flex-col items-center">
                 <div className="w-full  font-bold flex flex-col">
                   <label className="text-sm" htmlFor="email">
-                    Enter your yahoo email
+                    Enter a Username
                   </label>
                   <input
                     required
-                    type="email"
-                    name="email"
+                    type="text"
+                    name="username"
                     id="email"
-                    placeholder="Enter your yahoo email."
+                    min={4}
+                    max={8}
+                    placeholder="Enter your username"
                     className="font-[500] outline-none rounded-lg border pl-4 py-3 border-slate-200 placeholder:text-slate-500  transition-all mt-2  "
                   />
                 </div>
@@ -198,6 +219,7 @@ function validaterequired() {
                     Confirm your email
                   </label>
                   <input
+                  disabled
                     required
                     type="email"
                     name="confirm_email"
@@ -212,6 +234,7 @@ function validaterequired() {
                     Create a password
                   </label>
                   <input
+                  disabled
                     required
                     type="password"
                     name="password"
@@ -227,6 +250,7 @@ function validaterequired() {
                   </label>
                   <input
                     required
+                    disabled
                     type="text"
                     name="profile_name"
                     id="profile_name"
@@ -250,4 +274,4 @@ function validaterequired() {
   );
 }
 
-export default validaterequired;
+export default validateminmax;

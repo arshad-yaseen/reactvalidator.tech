@@ -53,6 +53,10 @@ function install() {
       <Head>
         <title>Install</title>
         <link rel="icon" href={Logo.src} />
+        <meta
+         name="description"
+          content="Install. Wrap. Validated"
+        />
       </Head>
 
       <Image
@@ -71,9 +75,19 @@ function install() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "just", delay: 0 }}
-          className="text-4xl font-[700] mb-6"
+          className="text-4xl font-[700] mb-6 flex "
         >
           Install
+          <div initial={{ y: 80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.5, type: "just" }} className="w-full flex justify-end">
+          <button
+            onClick={() => route.push("/rules")}
+            className=" hover:opacity-80  transition-opacity px-6 text-[1rem] border border-indigo-600 text-white bg-indigo-600 rounded-lg font-[500]"
+          >
+            Go to Rules →
+          </button>
+        </div>
         </motion.h1>
 
         <motion.div
@@ -178,16 +192,7 @@ function install() {
           </span>
         </motion.div>
 
-        <motion.div initial={{ y: 80, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5, type: "just" }} className="w-full flex justify-center mt-4 py-6 ">
-          <button
-            onClick={() => route.push("/rules")}
-            className="py-1.5 hover:opacity-80 transition-opacity px-10 text-lg border border-indigo-600 text-white bg-indigo-600 rounded-lg font-[500]"
-          >
-            Go to Rules
-          </button>
-        </motion.div>
+    
       </div>
     </div>
   );

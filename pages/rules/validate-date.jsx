@@ -11,20 +11,19 @@ import { coldarkDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { TbCopy } from "react-icons/tb";
 import { BsCheck } from "react-icons/bs";
 
-function validaterequired() {
-    
+function validatedate() {
   const customModalStyles = {
     content: {
-      top: "40%",
+      top: "50%",
       left: "50%",
       right: "auto",
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
       borderRadius: "15px",
-      display:"flex",
-      flexDirection:"column",
-      alignItems:"center"
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
     },
   };
 
@@ -33,14 +32,14 @@ function validaterequired() {
     lineHeight: "1.5",
     overflowY: "scroll",
     width: "100%",
-    padding:"30px 40px",
+    padding: "30px 40px",
     marginBottom: "20px",
     borderRadius: "8px",
   };
 
- useEffect(()=> {
+  useEffect(() => {
     Modal.setAppElement("#my-rule-element");
- },[])
+  }, []);
 
   const [modalIsOpen, setIsOpen] = useState(false);
   let [isCopied, setIsCopied] = useState(false);
@@ -53,17 +52,27 @@ function validaterequired() {
     setIsOpen(false);
   }
 
-  const code = ` validateRequired: {
-    action: "both",
-    message: "fill all required fields",
-    applyOnly:["name","password"]
-    notvalidated: (notFilledInputs) => {
-    console.log("Not filled required inputs",notFilledInputs);
+  const code = `ValidateDate: {
+    when: 'typing', // required
+    input: 'dob', // required
+    minDate: new Date('2000-01-01'),
+    maxDate: new Date('2023-03-07'),
+    allowOnlyBusinessDay: true,
+    allowOnlyWeekend: false,
+    customFormat: 'dd-MM-yyyy',
+    timeZone: 'Asia/Kolkata',
+    customErrorMessages: {
+      invalidDate: 'Invalid date format. Please enter a valid date.',
+      minDate: 'Date should not be earlier than 1st January 2000.',
+      maxDate: 'Date should not be later than 7th March 2023.',
+      businessDay: 'Selected date is not a business day.',
+      notWeekend: 'Selected date is not a weekend.',
+      invalidFormat: 'Date format is not valid. Please enter the date in dd-MM-yyyy format.',
+      invalidTimeZone: 'Invalid time zone. Please enter a valid time zone.',
     }
-    onsuccess:()=> {
-      console.log("All required fields are filled");
-    }
-  }`
+  }`;
+
+  const htmlcode = ``;
 
   return (
     <div id="my-rule-element" className="w-full h-screen flex justify-center">
@@ -73,8 +82,8 @@ function validaterequired() {
         style={customModalStyles}
         contentLabel="Example Modal"
       >
-        <p className="text-md font-[500] mb-3" >Paste this in rules section</p>
-        <div className="relative" >
+        <p className="text-md font-[500] mb-3">Paste this in rules section</p>
+        <div className="relative">
           <SyntaxHighlighter
             language="javascript"
             style={coldarkDark}
@@ -91,22 +100,51 @@ function validaterequired() {
               }, 1000);
             }}
             className={`absolute right-8 top-8 text-2xl flex -mt-3  ${
-              isCopied
-                ? "text-green-500"
-                : "text-slate-400 hover:text-white"
+              isCopied ? "text-green-500" : "text-slate-400 hover:text-white"
             }  cursor-pointer transition-colors`}
           >
             {isCopied ? <BsCheck /> : <TbCopy />}{" "}
           </span>
         </div>
+        {
+          // HTML CODE
+          htmlcode ? (
+            <div className="relative">
+              <SyntaxHighlighter
+                language="html"
+                style={coldarkDark}
+                customStyle={codeStyles}
+              >
+                {htmlcode}
+              </SyntaxHighlighter>
+            </div>
+          ) : (
+            ""
+          )
+        }
 
-        <p className="text-md font-[500]" ><span onClick={()=> window.open("https://npmjs.com/package/form-validation-react#validate-required-inputs")} className="text-blue-500 hover:underline cursor-pointer" >Official documentation</span> for Know more about this function</p>
+        <p className="text-md font-[500]">
+          <span
+            onClick={() =>
+              window.open(
+                "https://npmjs.com/package/form-validation-react#validate-date"
+              )
+            }
+            className="text-blue-500 hover:underline cursor-pointer"
+          >
+            Official documentation
+          </span>{" "}
+          for Know more about this function
+        </p>
       </Modal>
 
       <Head>
-        <title>Validate Required - React</title>
+        <title>Validate Date Input - React</title>
         <link rel="icon" href={Logo.src} />
-        <meta name="description" content="To check if all required input fields are filled when click on submit" />
+        <meta
+         name="description"
+          content="This function is used for validate date input"
+        />
       </Head>
 
       <Image
@@ -128,7 +166,7 @@ function validaterequired() {
             transition={{ type: "just", delay: 0 }}
             className="text-4xl font-[700]"
           >
-            Validate Required Inputs
+            Validate Date Input
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 80 }}
@@ -136,7 +174,7 @@ function validaterequired() {
             transition={{ type: "just", delay: 0.2 }}
             className="mt-6 text-xl font-[500] text-slate-500 text-center"
           >
-            To check if all required input fields are filled when click on submit
+            This function is used for validate date input
           </motion.p>
         </div>
         <motion.div
@@ -166,43 +204,58 @@ function validaterequired() {
           <ValidateForm
             errorElement="#signup_error_element"
             rules={{
-              validateRequired: {
-                action: "both",
-                message: "Fill all required fields",
-              },
+                ValidateDate: {
+                    when: 'typing', // required
+                    input: 'dob', // required
+                    minDate: new Date('2000-01-01'),
+                    maxDate: new Date('2023-03-07'),
+                    allowOnlyBusinessDay: true,
+                    allowOnlyWeekend: false,
+                    timeZone: 'Asia/Kolkata',
+                    customErrorMessages: {
+                      invalidDate: 'Invalid date format. Please enter a valid date.',
+                      minDate: 'Date should not be earlier than 1st January 2000.',
+                      maxDate: 'Date should not be later than 7th March 2023.',
+                      businessDay: 'Selected date is not a business day.',
+                      notWeekend: 'Selected date is not a weekend.',
+                      invalidFormat: 'Date format is not valid. Please enter the date in dd-MM-yyyy format.',
+                      invalidTimeZone: 'Invalid time zone. Please enter a valid time zone.',
+                    }
+                  }
             }}
           >
             <form className="sm:w-[500px] w-full  flex flex-col items-center ">
               <p
                 id="signup_error_element"
-                className=" mb-7 h-6 font-[500] mt-6 text-sm text-red-500"
+                className=" mb-6 font-[500] mt-6 text-sm text-red-500"
               ></p>
 
               <div className="w-full   flex flex-col items-center">
                 <div className="w-full  font-bold flex flex-col">
                   <label className="text-sm" htmlFor="email">
-                    Enter your yahoo email
+                    Enter your DOB Ex. 1999 January 16
                   </label>
                   <input
                     required
-                    type="email"
-                    name="email"
-                    id="email"
-                    placeholder="Enter your yahoo email."
+                    type="date"
+                    name="dob"
+                    id="age"
+                    placeholder="Ex. 12.988 or 126"
                     className="font-[500] outline-none rounded-lg border pl-4 py-3 border-slate-200 placeholder:text-slate-500  transition-all mt-2  "
                   />
                 </div>
 
                 <div className="w-full mt-8 font-bold flex flex-col">
                   <label className="text-sm" htmlFor="confirm_email">
-                    Confirm your email
+                    Email
                   </label>
                   <input
+                    disabled
                     required
                     type="email"
-                    name="confirm_email"
+                    name="email"
                     id="confirm_email"
-                    placeholder="Enter your email again."
+                    placeholder="Your website"
                     className="font-[500] outline-none rounded-lg border pl-4 py-3 border-slate-200 placeholder:text-slate-500  transition-all mt-2  "
                   />
                 </div>
@@ -212,10 +265,11 @@ function validaterequired() {
                     Create a password
                   </label>
                   <input
+                    disabled
                     required
-                    type="password"
-                    name="password"
-                    id="password"
+                    type="another"
+                    name="another"
+                    id="anotjer"
                     placeholder="Create a password."
                     className="font-[500] outline-none rounded-lg border pl-4 py-3 border-slate-200 placeholder:text-slate-500  transition-all mt-2  "
                   />
@@ -227,6 +281,7 @@ function validaterequired() {
                   </label>
                   <input
                     required
+                    disabled
                     type="text"
                     name="profile_name"
                     id="profile_name"
@@ -250,4 +305,4 @@ function validaterequired() {
   );
 }
 
-export default validaterequired;
+export default validatedate;

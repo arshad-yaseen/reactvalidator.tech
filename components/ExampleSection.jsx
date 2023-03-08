@@ -41,7 +41,7 @@ function ExampleSection() {
     <div className="w-full h-[100vh] relative   bg-slate-50 flex">
       <div className="w-[50%] fles flex-col">
         <div className="w-full h-24  flex items-end pl-32">
-          <h1 className="text-3xl font-bold">Email validation example</h1>
+          <h1 className="text-3xl font-bold">Usage</h1>
         </div>
         <div className="w-full h-full py-6 px-32 ">
           <SyntaxHighlighter
