@@ -8,20 +8,7 @@ function Header() {
 
   let route = useRouter();
 
-  useEffect(()=> {
-    const header = document.querySelector('.header');
-    const sticky = header.offsetTop + 100;
-    const scrollCallBack = window.addEventListener('scroll', () => {
-      if (window.pageYOffset > sticky) {
-        header.classList.add("border-b");
-      } else {
-        header.classList.remove("border-b");
-      }
-    })
-    return () => {
-      window.removeEventListener('scroll', scrollCallBack);
-    }
-  },[])
+ 
 
   useEffect(()=> {
     if(route.pathname !== "/"){

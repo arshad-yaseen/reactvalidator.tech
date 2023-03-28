@@ -25,7 +25,8 @@ function validaterequired() {
       borderRadius: "15px",
       display:"flex",
       flexDirection:"column",
-      alignItems:"center"
+      alignItems:"center",
+      border:"none",
     },
   };
 

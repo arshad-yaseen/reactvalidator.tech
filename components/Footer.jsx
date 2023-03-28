@@ -6,9 +6,9 @@ function Footer() {
     <div className='w-full h-96 bg-[#262626]  flex justify-center items-center' >
         <div className="w-auto  flex flex-col items-center">
 
-            <h1 onClick={()=> window.open("https://twitter.com/arrrshadd")} className='font-[500] text-[#A2A2A3]' >Made with ♡ by <span className='hover:text-indigo-500 cursor-pointer' >Arshad Yaseen</span></h1>
+            <h1 onClick={()=> window.open("https://twitter.com/arshadyaseeen")} className='font-[500] text-[#A2A2A3]' >Made with ♡ by <span className='hover:text-indigo-500 cursor-pointer' >Arshad Yaseen</span></h1>
 
-            <span onClick={()=> window.open("https://github.com/arshad-yaseen/form-validation-react")} className='text-2xl text-white mt-6 cursor-pointer' ><FaGithub /></span>
+            <span onClick={()=> window.open("https://www.buymeacoffee.com/arshadyaseen")} className='text-2xl text-white mt-6 cursor-pointer' ><FaGithub /></span>
 
 
         </div>

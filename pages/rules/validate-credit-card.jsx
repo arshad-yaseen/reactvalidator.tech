@@ -25,6 +25,7 @@ function validatecreditcard() {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
+      border:"none",
     },
   };
 

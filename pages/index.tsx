@@ -75,7 +75,7 @@ const Home: NextPage = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2, type: "just" }}
             onClick={() =>
-              window.open(" https://github.com/sponsors/arshad-yaseen")
+              window.open("https://www.buymeacoffee.com/arshadyaseen")
             }
             className="py-2.5 hover:opacity-80 transition-opacity px-10 text-xl border border-slate-400 mr-4 flex items-center text-slate-400 rounded-lg font-[500]"
           >

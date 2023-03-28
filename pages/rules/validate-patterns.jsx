@@ -25,6 +25,7 @@ function validatepatterns() {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
+      border:"none",
     },
   };
 
